@@ -1,0 +1,112 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'maven-publish'
+}
+apply from: "$project.rootDir/tools/script-git-version.gradle"
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/java'
+        test.java.srcDirs += 'src/test/java'
+        androidTest.java.srcDirs += 'src/androidTest/java'
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        warningsAsErrors true
+        xmlReport false
+        disable "RtlEnabled", "SetJavaScriptEnabled", "TypographyEllipsis", "VectorPath", "VectorRaster"
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            all {
+                testLogging {
+                    events "passed", "skipped", "failed", "standardOut", "standardError"
+                    outputs.upToDateWhen { false }
+                    showStandardStreams = true
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+
+    // Core Language
+    implementation kotlinSdk.stdlib
+
+    // AndroidX Support
+    implementation androidx.appcompat
+    implementation androidx.supportDesign
+    implementation androidx.constraintLayout
+    implementation androidx.swipeRefresherLayout
+
+    // Log
+    implementation timber.core
+
+    // Unit Tests
+    testImplementation testLibraries.junit
+    testImplementation testLibraries.mockk
+
+    // RX
+    implementation rx.java
+    implementation rx.kotlin
+    implementation rx.android
+
+    // Instrumented Tests
+    implementation testLibraries.espressoIdling
+    androidTestImplementation testLibraries.runner
+    androidTestImplementation testLibraries.rules
+    androidTestImplementation(testLibraries.espressoCore, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    androidTestImplementation testLibraries.espressoWeb
+}
+
+publishing {
+    publications {
+        bar(MavenPublication) {
+            groupId GROUP
+            artifactId POM_ARTIFACT_ID
+            version gitVersionName
+            artifact("$buildDir/outputs/aar/$POM_ARTIFACT_ID-release.aar")
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/leofuria/paged-list")
+            credentials {
+                username = System.getenv("BIT_GPR_USER")
+                password = System.getenv("BIT_GPR_API_KEY")
+            }
+        }
+    }
+}

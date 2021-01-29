@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="pagedlist_load_end">Sem mais resultados</string>
+
+    <!--ERROR LAYOUT-->
+    <string name="pagedlist_generic_error">Desculpe, ocorreu um erro</string>
+    <string name="pagedlist_desc_error_image">Error icon</string>
+    <string name="pagedlist_try_again_label">Tentar Novamente</string>
+    <string name="pagedlist_verify_connection_label">Verifique sua conexão à internet e tente novamente</string>
+
+</resources>

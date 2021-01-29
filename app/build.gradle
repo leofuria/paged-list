@@ -1,0 +1,70 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "br.com.bitsolutions.pagedlist"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation project(':pagedlist')
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Core Language
+    implementation kotlinSdk.stdlib
+
+    // AndroidX Support
+    implementation androidx.material
+    implementation androidx.appcompat
+    implementation androidx.supportDesign
+    implementation androidx.constraintLayout
+    implementation androidx.swipeRefresherLayout
+
+    // Log
+    implementation timber.core
+
+    // Unit Tests
+    testImplementation testLibraries.junit
+    testImplementation testLibraries.mockk
+
+    // RX
+    implementation rx.java
+    implementation rx.kotlin
+    implementation rx.android
+
+    // Instrumented Tests
+    implementation testLibraries.espressoIdling
+    androidTestImplementation testLibraries.runner
+    androidTestImplementation testLibraries.rules
+    androidTestImplementation(testLibraries.espressoCore, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    androidTestImplementation testLibraries.espressoWeb
+}

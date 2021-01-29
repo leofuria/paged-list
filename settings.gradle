@@ -1,0 +1,3 @@
+include ':pagedlist'
+include ':app'
+rootProject.name = "PagedList"
