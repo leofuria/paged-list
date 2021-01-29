@@ -1,4 +1,4 @@
-package br.com.bitsolutions.pagedlist
+package br.com.bitsolutions.android
 
 import android.view.LayoutInflater
 import android.view.View
