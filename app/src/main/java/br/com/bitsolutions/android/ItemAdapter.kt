@@ -24,8 +24,8 @@ class ItemAdapter : PagedListAdapter<Item, ItemViewHolder>(DiffCallback) {
 //                getNotifyItemClickViewHolder().subscribe {
 //                    notifyItemClick.onNext(Pair(bindingAdapterPosition, it))
 //                }
-//                getNotifyCancelationCardClickViewHolder().subscribe {
-//                    notifyCancelationCardClick.onNext(it)
+//                getNotifyCancellationCardClickViewHolder().subscribe {
+//                    notifyCancellationCardClick.onNext(it)
 //                }
 //            }
 //            LOADING_VIEW -> createLoadingView(parent)
@@ -59,9 +59,9 @@ class ItemAdapter : PagedListAdapter<Item, ItemViewHolder>(DiffCallback) {
 
     override fun createItemView(parent: ViewGroup): ItemViewHolder {
 
-        // PACKAGE_VIEW_TYPE -> Fica como default. Caso o adapter só tenha um viewHolder o
-        // onCreateViewHolder não é necessário e o
-        // bindItemView só precisará de um elemento sem a necessidade da estrutura acima
+        // PACKAGE_VIEW_TYPE -> Default. If adapter has only one viewHolder the
+        // onCreateViewHolder is not necessary and
+        // bindItemView will need one element and structure above is not necessary
         return ItemViewHolder.create(parent).apply {
             getNotifyItemClickViewHolder().subscribe {
                 notifyItemClick.onNext(Pair(adapterPosition, it))

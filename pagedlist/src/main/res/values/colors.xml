@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="pagedlist_primary_color">#143A7C</color>
-    <color name="pagedlist_secondary_color">#E6207E</color>
+    <color name="paged_list_primary_color">#143A7C</color>
+    <color name="paged_list_secondary_color">#E6207E</color>
 
-    <color name="pagedlist_gray">#9e9e9e</color>
-    <color name="pagedlist_gray_dark">#616161</color>
-    <color name="pagedlist_gray_darker">#212121</color>
+    <color name="paged_list_gray">#9e9e9e</color>
+    <color name="paged_list_gray_dark">#616161</color>
+    <color name="paged_list_gray_darker">#212121</color>
 
 </resources>

@@ -3,9 +3,11 @@ package br.com.bitsolutions.pagedlist.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.AbsListView
-import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.*
-import br.com.bitsolutions.pagedlist.R
+import br.com.bitsolutions.pagedlist.databinding.PagedListErrorViewHolderBinding
+import br.com.bitsolutions.pagedlist.databinding.PagedListFooterViewHolderBinding
+import br.com.bitsolutions.pagedlist.databinding.PagedListHeaderViewHolderBinding
+import br.com.bitsolutions.pagedlist.databinding.PagedListLoadingViewHolderBinding
 import br.com.bitsolutions.pagedlist.enums.PagedListState
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
@@ -21,7 +23,6 @@ abstract class PagedListAdapter<T, VH : RecyclerView.ViewHolder>(
     )
     protected var state = PagedListState.LOADING
     protected val disposable = CompositeDisposable()
-    private var headerLayout = R.layout.pagedlist_footer_view_holder
     protected var hasHeader = false
     var mHeaderCount = 0
 
@@ -167,10 +168,9 @@ abstract class PagedListAdapter<T, VH : RecyclerView.ViewHolder>(
         state = PagedListState.ERROR
     }
 
-    fun showHeader(mView: Int) {
+    fun showHeader() {
         hasHeader = true
         mHeaderCount = 1
-        headerLayout = mView
     }
 
     fun getItem(position: Int): T {
@@ -186,41 +186,33 @@ abstract class PagedListAdapter<T, VH : RecyclerView.ViewHolder>(
 
     protected open fun createErrorView(parent: ViewGroup): RecyclerView.ViewHolder {
 
-        val view = LayoutInflater
-            .from(parent.context)
-            .inflate(R.layout.pagedlist_error_view_holder, parent, false)
+        val view = PagedListErrorViewHolderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        view.findViewById<AppCompatButton>(R.id.try_again_button).setOnClickListener {
+        view.tryAgainButton.setOnClickListener {
             state = PagedListState.DONE
             notifyDataSetChanged()
             loadMoreListener?.onLoadMore()
         }
 
-        return object : RecyclerView.ViewHolder(view) {}
+        return object : RecyclerView.ViewHolder(view.root) {}
     }
 
     protected open fun createLoadingView(parent: ViewGroup): RecyclerView.ViewHolder {
 
-        val view = LayoutInflater
-            .from(parent.context)
-            .inflate(R.layout.pagedlist_loading_view_holder, parent, false)
-        return object : RecyclerView.ViewHolder(view) {}
+        val view = PagedListLoadingViewHolderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return object : RecyclerView.ViewHolder(view.root) {}
     }
 
     protected open fun createFooterView(parent: ViewGroup): RecyclerView.ViewHolder {
 
-        val view = LayoutInflater
-            .from(parent.context)
-            .inflate(R.layout.pagedlist_footer_view_holder, parent, false)
-        return object : RecyclerView.ViewHolder(view) {}
+        val view = PagedListFooterViewHolderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return object : RecyclerView.ViewHolder(view.root) {}
     }
 
     protected open fun createHeaderView(parent: ViewGroup): RecyclerView.ViewHolder {
 
-        val view = LayoutInflater
-            .from(parent.context)
-            .inflate(headerLayout, parent, false)
-        return object : RecyclerView.ViewHolder(view) {}
+        val view = PagedListHeaderViewHolderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return object : RecyclerView.ViewHolder(view.root) {}
     }
 
     fun updateItem(position: Int, item: T) {

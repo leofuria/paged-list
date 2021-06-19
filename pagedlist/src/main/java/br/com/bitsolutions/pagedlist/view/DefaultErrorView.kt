@@ -2,19 +2,13 @@ package br.com.bitsolutions.pagedlist.view
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
 import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.TextView
 import br.com.bitsolutions.pagedlist.R
+import br.com.bitsolutions.pagedlist.databinding.PagedListLayoutErrorDefaultBinding
 
 class DefaultErrorView : FrameLayout {
-
-    private val errorImage by lazy { findViewById<ImageView>(R.id.errorImage) }
-    private val errorTitleText by lazy { findViewById<TextView>(R.id.errorTitleText) }
-    private val errorText by lazy { findViewById<TextView>(R.id.errorText) }
-    private val refreshButton by lazy { findViewById<Button>(R.id.refreshButton) }
 
     constructor(context: Context) : super(context, null, 0)
 
@@ -26,17 +20,18 @@ class DefaultErrorView : FrameLayout {
         defStyle
     )
 
+    private var binding: PagedListLayoutErrorDefaultBinding = PagedListLayoutErrorDefaultBinding.inflate(LayoutInflater.from(context), this, true)
+
     init {
         layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
-        inflate(context, R.layout.pagedlist_layout_error_default, this)
     }
 
     private fun setErrorImage(resourceId: Int) {
-        errorImage.setImageResource(resourceId)
+        binding.errorImage.setImageResource(resourceId)
     }
 
     private fun setErrorTitle(title: String) {
-        errorTitleText.text = title
+        binding.errorTitleText.text = title
     }
 
     private fun setErrorTitle(titleId: Int) {
@@ -44,8 +39,8 @@ class DefaultErrorView : FrameLayout {
     }
 
     private fun setErrorText(text: String) {
-        errorText.text = text
-        errorText.visibility = if (text.isBlank()) View.GONE else View.VISIBLE
+        binding.errorText.text = text
+        binding.errorText.visibility = if (text.isBlank()) View.GONE else View.VISIBLE
     }
 
     private fun setErrorText(textId: Int = 0) {
@@ -55,16 +50,16 @@ class DefaultErrorView : FrameLayout {
     private fun setErrorButtonAction(action: (() -> Unit)? = null) {
 
         if (action != null) {
-            refreshButton.setOnClickListener { action.invoke() }
-            refreshButton.visibility = View.VISIBLE
+            binding.refreshButton.setOnClickListener { action.invoke() }
+            binding.refreshButton.visibility = View.VISIBLE
         } else {
-            refreshButton.setOnClickListener(null)
-            refreshButton.visibility = View.GONE
+            binding.refreshButton.setOnClickListener(null)
+            binding.refreshButton.visibility = View.GONE
         }
     }
 
     fun showFeedbackStatus(
-        imageResource: Int = R.drawable.pagedlist_ic_baseline_signal_wifi_off_24,
+        imageResource: Int = R.drawable.paged_list_ic_baseline_signal_wifi_off_24,
         feedbackTitle: String,
         feedbackMessage: String = "",
         action: (() -> Unit)? = null
@@ -78,7 +73,7 @@ class DefaultErrorView : FrameLayout {
     }
 
     fun showFeedbackStatus(
-        imageResource: Int = R.drawable.pagedlist_ic_baseline_signal_wifi_off_24,
+        imageResource: Int = R.drawable.paged_list_ic_baseline_signal_wifi_off_24,
         feedbackTitle: Int,
         feedbackMessage: Int = 0,
         action: (() -> Unit)? = null

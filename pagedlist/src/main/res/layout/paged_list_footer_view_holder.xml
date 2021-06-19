@@ -3,10 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ProgressBar
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/end_list_footer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/pagedlist_dp_16" />
+        android:layout_margin="@dimen/paged_list_dp_16"
+        android:background="@null"
+        android:padding="@dimen/paged_list_dp_10"
+        android:text="@string/paged_list_load_end"
+        android:textColor="@color/paged_list_gray_dark" />
 
 </FrameLayout>

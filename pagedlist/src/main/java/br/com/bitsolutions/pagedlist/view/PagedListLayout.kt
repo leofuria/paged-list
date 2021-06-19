@@ -40,6 +40,7 @@ class PagedListLayout : SwipeRefreshLayout {
         recyclerView.setHasFixedSize(true)
         recyclerView.takeIf { it.layoutManager == null }.apply { layoutManager = LinearLayoutManager(context) }
         feedbackView.visibility = View.GONE
+        this.setColorSchemeResources(R.color.paged_list_primary_color)
 
         content.addView(recyclerView, layoutParams)
         content.addView(feedbackView, layoutParams)
@@ -61,7 +62,7 @@ class PagedListLayout : SwipeRefreshLayout {
         super.setRefreshing(refreshing)
     }
 
-    fun showFeedbackStatus(imageResource: Int = R.drawable.pagedlist_ic_baseline_signal_wifi_off_24,
+    fun showFeedbackStatus(imageResource: Int = R.drawable.paged_list_ic_baseline_signal_wifi_off_24,
                            feedbackTitle: String,
                            feedbackMessage: String,
                            action: (() -> Unit)? = null) {
@@ -75,7 +76,7 @@ class PagedListLayout : SwipeRefreshLayout {
         recyclerView.visibility = View.GONE
     }
 
-    fun showFeedbackStatus(imageResource: Int = R.drawable.pagedlist_ic_baseline_signal_wifi_off_24,
+    fun showFeedbackStatus(imageResource: Int = R.drawable.paged_list_ic_baseline_signal_wifi_off_24,
                            feedbackTitle: Int,
                            feedbackMessage: Int = 0,
                            action: (() -> Unit)? = null) {

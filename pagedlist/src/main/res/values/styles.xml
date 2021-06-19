@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="pagedlist_text_bold_24_gray_dark">
-        <item name="android:textColor">@color/pagedlist_gray_dark</item>
+    <style name="paged_list_text_bold_24_gray_dark">
+        <item name="android:textColor">@color/paged_list_gray_dark</item>
         <item name="android:fontFamily">@font/montserrat_bold</item>
-        <item name="android:textSize">@dimen/pagedlist_sp_24</item>
+        <item name="android:textSize">@dimen/paged_list_sp_24</item>
     </style>
 
-    <style name="pagedlist_text_regular_16_gray_darker">
-        <item name="android:textColor">@color/pagedlist_gray_darker</item>
+    <style name="paged_list_text_regular_16_gray_darker">
+        <item name="android:textColor">@color/paged_list_gray_darker</item>
         <item name="android:fontFamily">@font/montserrat_regular</item>
-        <item name="android:textSize">@dimen/pagedlist_sp_16</item>
+        <item name="android:textSize">@dimen/paged_list_sp_16</item>
     </style>
 
 </resources>

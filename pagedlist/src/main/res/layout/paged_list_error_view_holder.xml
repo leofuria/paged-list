@@ -9,11 +9,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/pagedlist_dp_16"
+        android:layout_margin="@dimen/paged_list_dp_16"
         android:background="@null"
-        android:padding="@dimen/pagedlist_dp_10"
-        android:text="@string/pagedlist_try_again_label"
-        android:textColor="@color/pagedlist_primary_color"
-        app:drawableStartCompat="@drawable/pagedlist_ic_baseline_refresh_24" />
+        android:padding="@dimen/paged_list_dp_10"
+        android:text="@string/paged_list_try_again_label"
+        android:textColor="@color/paged_list_primary_color"
+        app:drawableStartCompat="@drawable/paged_list_ic_baseline_refresh_24" />
 
 </FrameLayout>

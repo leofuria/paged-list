@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="@color/pagedlist_gray" />
-    <corners android:radius="@dimen/pagedlist_dp_4" />
+    <solid android:color="@color/paged_list_gray" />
+    <corners android:radius="@dimen/paged_list_dp_4" />
 </shape>

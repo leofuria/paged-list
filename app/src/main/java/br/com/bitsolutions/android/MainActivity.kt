@@ -1,29 +1,30 @@
 package br.com.bitsolutions.android
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.bitsolutions.android.databinding.ActivityMainBinding
 import br.com.bitsolutions.pagedlist.adapter.PagedListAdapter
-import br.com.bitsolutions.pagedlist.view.PagedListLayout
 
 class MainActivity : AppCompatActivity() {
-
-    private val pagedListrecyclerView: PagedListLayout by lazy { findViewById(R.id.pagedListrecyclerView) }
     private lateinit var adapter: ItemAdapter
+
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         adapter = ItemAdapter()
-        pagedListrecyclerView.layoutManager = LinearLayoutManager(this)
-        pagedListrecyclerView.background = ContextCompat.getDrawable(this, android.R.color.white)
-        pagedListrecyclerView.getRecyclerView().setHasFixedSize(true)
-        pagedListrecyclerView.adapter = this.adapter
+        binding.pagedListRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.pagedListRecyclerView.background = ContextCompat.getDrawable(this, android.R.color.white)
+        binding.pagedListRecyclerView.getRecyclerView().setHasFixedSize(true)
+        binding.pagedListRecyclerView.adapter = this.adapter
 
         adapter.loadMoreListener = object : PagedListAdapter.ILoadMoreListener {
             override fun onLoadMore() {
@@ -32,8 +33,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        pagedListrecyclerView.setOnRefreshListener {
-            pagedListrecyclerView.isRefreshing = true
+        binding.pagedListRecyclerView.setOnRefreshListener {
+            binding.pagedListRecyclerView.isRefreshing = true
             getData()
         }
 
@@ -73,7 +74,7 @@ class MainActivity : AppCompatActivity() {
                 Item("20", "DESC")
             )
         )
-        pagedListrecyclerView.isRefreshing = false
+        binding.pagedListRecyclerView.isRefreshing = false
         adapter.loadEnable = true
     }
 
@@ -122,15 +123,15 @@ class MainActivity : AppCompatActivity() {
                 Item("40", "DESC")
             )
         )
-        pagedListrecyclerView.isRefreshing = false
+        binding.pagedListRecyclerView.isRefreshing = false
         adapter.loadEnable = false
     }
 
     private fun checkError() {
         if (adapter.itemCount <= 0) {
-            pagedListrecyclerView.showFeedbackStatus(
-                feedbackTitle = R.string.pagedlist_generic_error,
-                feedbackMessage = R.string.pagedlist_verify_connection_label,
+            binding.pagedListRecyclerView.showFeedbackStatus(
+                feedbackTitle = R.string.paged_list_generic_error,
+                feedbackMessage = R.string.paged_list_verify_connection_label,
                 action = { getData() }
             )
         } else {

@@ -1,21 +1,16 @@
 package br.com.bitsolutions.android
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import br.com.bitsolutions.android.databinding.ItemViewHolderBinding
 import br.com.bitsolutions.pagedlist.adapter.PagedListViewHolder
 
-class ItemViewHolder(val view: View) : PagedListViewHolder<Item>(view) {
-
-    val tvItemLabel = itemView.findViewById<TextView>(R.id.tvItemLabel)
-    val tvItemValue = itemView.findViewById<TextView>(R.id.tvItemValue)
+class ItemViewHolder(private val view: ItemViewHolderBinding) : PagedListViewHolder<Item>(view.root) {
 
     companion object {
         fun create(parent: ViewGroup): ItemViewHolder {
             return ItemViewHolder(
-                LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_view_holder, parent, false)
+                ItemViewHolderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
         }
     }
@@ -31,8 +26,8 @@ class ItemViewHolder(val view: View) : PagedListViewHolder<Item>(view) {
     override fun bindItem(item: Item?) {
         currentItem = item
         currentItem?.let {
-            tvItemLabel.text = "Número ${it.id}"
-            tvItemValue.text = "${it.desc} 64cb1168 - 38299166"
+            view.tvItemLabel.text = String.format("Number ${it.id}")
+            view.tvItemValue.text = String.format("${it.desc} 64cb1168 - 38299166")
         }
 
     }
