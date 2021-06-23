@@ -1,23 +1,39 @@
 # paged-list
 
-## Installation
+## Integration
 
-The Component is available through [GitHub Packages][github.releases], you just need to download or import as below and add the project with Gradle dependency.
+### Manual Installation
+The Paged List SDK can be installed manually from the `.aar` file. The download link is available through [GitHub Packages][github.releases].
+
+To install the library you need to save the `.aar` file under your app module `libs` folder, for example `MyAwesomeProject/app/libs`, and include `*.aar` in application level `build.gradle` file:
+```groovy
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+}
+```
+
+After that synchronize project.
 
 ### Import with Gradle
 
-Import the Paged List library by adding it to your `build.gradle` file.
-For example:
+The Paged List SDK can be installed using Gradle from the GitHub Packages.
+
+To integrate the SDK, first add the following code to the project level `build.gradle` file:
 ```groovy
 allprojects {
     repositories {
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/leofuria/pagedlist")
+            credentials {
+                username = System.getenv("GPR_USER")
+                password = System.getenv("GPR_API_KEY")
+            }
         }
     }
 }
 ```
+Next, add the dependency to the application level `build.gradle`:
 ```groovy
 implementation "br.com.bitsolutions:pagedlist:1.0.0"
 ```
