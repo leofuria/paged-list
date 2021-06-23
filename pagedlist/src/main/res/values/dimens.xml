@@ -9,7 +9,10 @@
     <dimen name="paged_list_dp_22">22dp</dimen>
     <dimen name="paged_list_dp_36">36dp</dimen>
 
+    <dimen name="paged_list_sp_14">14sp</dimen>
     <dimen name="paged_list_sp_16">16sp</dimen>
     <dimen name="paged_list_sp_24">24sp</dimen>
+
+    <dimen name="paged_list_radius_small">4dp</dimen>
 
 </resources>

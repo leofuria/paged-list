@@ -2,10 +2,13 @@
 <resources>
 
     <color name="paged_list_primary_color">#143A7C</color>
+    <color name="paged_list_primary_color_light">#1265C0</color>
     <color name="paged_list_secondary_color">#E6207E</color>
 
     <color name="paged_list_gray">#9e9e9e</color>
     <color name="paged_list_gray_dark">#616161</color>
     <color name="paged_list_gray_darker">#212121</color>
+
+    <color name="paged_list_icon_gray">@color/paged_list_gray</color>
 
 </resources>

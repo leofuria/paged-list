@@ -5,13 +5,13 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/end_list_footer"
+        style="@style/paged_list_header_view_holder_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/paged_list_dp_16"
         android:background="@null"
         android:padding="@dimen/paged_list_dp_10"
-        android:text="@string/paged_list_header"
-        android:textColor="@color/paged_list_gray_dark" />
+        android:text="@string/paged_list_header" />
 
 </FrameLayout>

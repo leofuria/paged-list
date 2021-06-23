@@ -1,16 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="paged_list_text_bold_24_gray_dark">
+    <style name="paged_list_title_error_layout">
         <item name="android:textColor">@color/paged_list_gray_dark</item>
         <item name="android:fontFamily">@font/montserrat_bold</item>
-        <item name="android:textSize">@dimen/paged_list_sp_24</item>
+        <item name="android:textSize">@dimen/paged_list_sp_16</item>
     </style>
 
-    <style name="paged_list_text_regular_16_gray_darker">
+    <style name="paged_list_desc_error_layout">
         <item name="android:textColor">@color/paged_list_gray_darker</item>
         <item name="android:fontFamily">@font/montserrat_regular</item>
-        <item name="android:textSize">@dimen/paged_list_sp_16</item>
+        <item name="android:textSize">@dimen/paged_list_sp_14</item>
+    </style>
+
+    <style name="paged_list_header_view_holder_layout">
+        <item name="android:textColor">@color/paged_list_gray_darker</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">@dimen/paged_list_sp_14</item>
+    </style>
+
+    <style name="paged_list_footer_view_holder_layout">
+        <item name="android:textColor">@color/paged_list_gray_darker</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">@dimen/paged_list_sp_14</item>
+    </style>
+
+    <style name="paged_list_button_error_layout">
+        <item name="android:background">@drawable/paged_list_button_primary</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/paged_list_sp_14</item>
+    </style>
+
+    <style name="paged_list_error_view_holder_button">
+        <item name="android:textColor">@color/paged_list_primary_color</item>
+        <item name="drawableStartCompat">@drawable/paged_list_ic_baseline_refresh_24</item>
+        <item name="android:drawableStart">@drawable/paged_list_ic_baseline_refresh_24</item>
+        <item name="android:background">@null</item>
+        <item name="colorControlNormal">@color/paged_list_primary_color</item>
+        <item name="colorControlActivated">@color/paged_list_primary_color</item>
+    </style>
+
+    <style name="paged_list_error_image">
+        <item name="android:background">@null</item>
+        <item name="colorControlNormal">@color/paged_list_gray</item>
+        <item name="colorControlActivated">@color/paged_list_gray</item>
     </style>
 
 </resources>

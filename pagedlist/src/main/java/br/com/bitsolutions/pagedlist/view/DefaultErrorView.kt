@@ -1,10 +1,12 @@
 package br.com.bitsolutions.pagedlist.view
 
 import android.content.Context
+import android.graphics.PorterDuff
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import androidx.core.content.ContextCompat
 import br.com.bitsolutions.pagedlist.R
 import br.com.bitsolutions.pagedlist.databinding.PagedListLayoutErrorDefaultBinding
 
@@ -28,6 +30,8 @@ class DefaultErrorView : FrameLayout {
 
     private fun setErrorImage(resourceId: Int) {
         binding.errorImage.setImageResource(resourceId)
+        binding.errorImage.setColorFilter(ContextCompat.getColor(context, R.color.paged_list_icon_gray), PorterDuff.Mode.SRC_IN)
+
     }
 
     private fun setErrorTitle(title: String) {
