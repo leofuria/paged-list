@@ -2,7 +2,7 @@
 
 ## Installation
 
-The Components are available through [GitHub Packages][github.releases], you only need to download and add the project with Gradle dependency.
+The Component is available through [GitHub Packages][github.releases], you just need to download or import as below and add the project with Gradle dependency.
 
 ### Import with Gradle
 
@@ -22,7 +22,7 @@ allprojects {
 implementation "br.com.bitsolutions:pagedlist:1.0.0"
 ```
 
-## Components
+## Component
 
 To use the component, just add the view to the layout and follow the examples in [Example][component.example].
 
