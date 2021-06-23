@@ -33,6 +33,8 @@ allprojects {
     }
 }
 ```
+You need to generate a [Personal access tokens][create.token], and add it to your environment variables
+
 Next, add the dependency to the application level `build.gradle`:
 ```groovy
 implementation "br.com.bitsolutions:pagedlist:1.0.0"
@@ -135,3 +137,4 @@ To use the component, just add the view to the layout and follow the examples in
 
 [github.releases]: https://github.com/leofuria?tab=packages&repo_name=paged-list
 [component.example]: https://github.com/leofuria/paged-list/tree/master/app/src/main/java/br/com/bitsolutions/android
+[create.token]: https://docs.github.com/pt/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
