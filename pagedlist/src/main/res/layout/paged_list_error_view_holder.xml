@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/paged_list_dp_16"
+        android:background="@null"
         android:padding="@dimen/paged_list_dp_10"
         android:text="@string/paged_list_try_again_label"
         android:theme="@style/paged_list_error_view_holder_button" />

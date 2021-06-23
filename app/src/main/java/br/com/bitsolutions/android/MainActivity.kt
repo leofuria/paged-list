@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private var errorEnabled = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -22,14 +24,19 @@ class MainActivity : AppCompatActivity() {
 
         adapter = ItemAdapter()
         binding.pagedListRecyclerView.layoutManager = LinearLayoutManager(this)
-        binding.pagedListRecyclerView.background = ContextCompat.getDrawable(this, android.R.color.white)
+        binding.pagedListRecyclerView.background =
+            ContextCompat.getDrawable(this, android.R.color.white)
         binding.pagedListRecyclerView.getRecyclerView().setHasFixedSize(true)
         binding.pagedListRecyclerView.adapter = this.adapter
 
         adapter.loadMoreListener = object : PagedListAdapter.ILoadMoreListener {
             override fun onLoadMore() {
-                Handler(Looper.getMainLooper()).postDelayed({ getData2() }, 3000)
-//                checkError()
+                if (errorEnabled) {
+                    errorEnabled = false
+                    checkError()
+                } else {
+                    Handler(Looper.getMainLooper()).postDelayed({ getData2() }, 3000)
+                }
             }
         }
 
@@ -45,8 +52,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        Handler(Looper.getMainLooper()).postDelayed({ getData() }, 3000)
-//        checkError()
+        if (errorEnabled) {
+            errorEnabled = false
+            checkError()
+        } else {
+            Handler(Looper.getMainLooper()).postDelayed({ getData() }, 3000)
+        }
     }
 
     private fun getData() {
@@ -76,6 +87,7 @@ class MainActivity : AppCompatActivity() {
         )
         binding.pagedListRecyclerView.isRefreshing = false
         adapter.loadEnable = true
+        errorEnabled = true
     }
 
     private fun getData2() {
@@ -132,7 +144,10 @@ class MainActivity : AppCompatActivity() {
             binding.pagedListRecyclerView.showFeedbackStatus(
                 feedbackTitle = R.string.paged_list_generic_error,
                 feedbackMessage = R.string.paged_list_verify_connection_label,
-                action = { getData() }
+                action = {
+                    binding.pagedListRecyclerView.takeUnless { it.isRefreshing }?.isRefreshing = true
+                    getData()
+                }
             )
         } else {
             adapter.showLoadMoreError()
