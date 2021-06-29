@@ -7,8 +7,6 @@ buildscript {
     }
 }
 
-import org.ajoberstar.grgit.Grgit
-
 /**
  * git.describe()
  *
@@ -20,7 +18,7 @@ import org.ajoberstar.grgit.Grgit
  */
 
 ext {
-    git = Grgit.open(currentDir: projectDir)
+    git = org.ajoberstar.grgit.Grgit.open(currentDir: projectDir)
 
     gitBranchName = git.branch.current.name
 
