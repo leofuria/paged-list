@@ -3,7 +3,7 @@
 ## Integration
 
 ### Manual Installation
-The Paged List SDK can be installed manually from the `.aar` file. The download link is available through [GitHub Packages][github.releases].
+The Paged List SDK can be installed manually from the `.aar` file. The download link is available through [GitHub Packages][github.packages] or you can download a jar from GitHub's [release page][github.releases].
 
 To install the library you need to save the `.aar` file under your app module `libs` folder, for example `MyAwesomeProject/app/libs`, and include `*.aar` in application level `build.gradle` file:
 ```groovy
@@ -16,8 +16,9 @@ After that synchronize project.
 
 ### Import with Gradle
 
-The Paged List SDK can be installed using Gradle from the GitHub Packages.
+The Paged List SDK can be installed using Gradle from the GitHub Packages or GitHub Releases.
 
+## GitHub Packages
 To integrate the SDK, first add the following code to the project level `build.gradle` file:
 ```groovy
 allprojects {
@@ -38,6 +39,18 @@ You need to generate a [Personal access tokens][create.token], and add it to you
 Next, add the dependency to the application level `build.gradle`:
 ```groovy
 implementation "br.com.bitsolutions:pagedlist:1.0.0"
+```
+
+## GitHub Releases
+```groovy
+repositories {
+  google()
+  mavenCentral()
+}
+
+dependencies {
+  implementation "com.github.leofuria:paged-list:1.0.0"
+}
 ```
 
 ## Component
@@ -135,6 +148,7 @@ To use the component, just add the view to the layout and follow the examples in
 </resources>
 ```
 
-[github.releases]: https://github.com/leofuria?tab=packages&repo_name=paged-list
+[github.packages]: https://github.com/leofuria?tab=packages&repo_name=paged-list
+[github.releases]: https://github.com/leofuria/paged-list/releases
 [component.example]: https://github.com/leofuria/paged-list/tree/master/app/src/main/java/br/com/bitsolutions/android
 [create.token]: https://docs.github.com/pt/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
