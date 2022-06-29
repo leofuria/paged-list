@@ -1,6 +1,8 @@
 package br.com.bitsolutions.pagedlist.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
 import androidx.recyclerview.widget.*
@@ -13,6 +15,7 @@ import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.PublishSubject
 
+@SuppressLint("NotifyDataSetChanged")
 abstract class PagedListAdapter<T, VH : RecyclerView.ViewHolder>(
     diffCallback: DiffUtil.ItemCallback<T>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -24,6 +27,7 @@ abstract class PagedListAdapter<T, VH : RecyclerView.ViewHolder>(
     protected var state = PagedListState.LOADING
     protected val disposable = CompositeDisposable()
     protected var hasHeader = false
+    var hasFooter = false
     var mHeaderCount = 0
 
     var loadEnable: Boolean = true
@@ -206,6 +210,11 @@ abstract class PagedListAdapter<T, VH : RecyclerView.ViewHolder>(
     protected open fun createFooterView(parent: ViewGroup): RecyclerView.ViewHolder {
 
         val view = PagedListFooterViewHolderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        if (hasFooter)
+            view.endListFooter.visibility = View.VISIBLE
+        else
+            view.endListFooter.visibility = View.GONE
+
         return object : RecyclerView.ViewHolder(view.root) {}
     }
 
@@ -215,6 +224,7 @@ abstract class PagedListAdapter<T, VH : RecyclerView.ViewHolder>(
         return object : RecyclerView.ViewHolder(view.root) {}
     }
 
+    @SuppressLint("unused")
     fun updateItem(position: Int, item: T) {
         val list = ArrayList(helper.currentList)
         list[position] = item

@@ -6,7 +6,7 @@ plugins {
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion "30.0.3"
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "br.com.bitsolutions.pagedlist"
@@ -31,12 +31,14 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
+        apiVersion = '1.7'
+        languageVersion = '1.7'
     }
 }
 

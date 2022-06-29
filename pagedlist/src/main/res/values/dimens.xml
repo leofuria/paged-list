@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="paged_list_dp_2">2dp</dimen>
     <dimen name="paged_list_dp_4">4dp</dimen>
     <dimen name="paged_list_dp_8">8dp</dimen>
     <dimen name="paged_list_dp_10">10dp</dimen>
     <dimen name="paged_list_dp_16">16dp</dimen>
-    <dimen name="paged_list_dp_22">22dp</dimen>
     <dimen name="paged_list_dp_36">36dp</dimen>
 
     <dimen name="paged_list_sp_14">14sp</dimen>
     <dimen name="paged_list_sp_16">16sp</dimen>
-    <dimen name="paged_list_sp_24">24sp</dimen>
 
     <dimen name="paged_list_radius_small">4dp</dimen>
 

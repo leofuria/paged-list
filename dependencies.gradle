@@ -1,25 +1,22 @@
 ext {
+    buildToolsVersion = "31.0.0"
+
     // Core Language
-    kotlinVersion = '1.4.31'
+    kotlinVersion = '1.7.0'
     kotlinSdk = [
-            plugin  : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
             reflect : "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion",
             stdlib  : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
     ]
 
     // Android Project Config
-    compileSdkVersion = 29
-    targetSdkVersion = 29
+    compileSdkVersion = 31
+    targetSdkVersion = 30
     minSdkVersion = 21
-    androidGradlePluginVersion = '4.1.1'
-    android = [
-            plugin: "com.android.tools.build:gradle:$androidGradlePluginVersion",
-    ]
 
     // AndroidX Support
     androidxSupportVersion = "28.0.0"
-    androidxConstraintLayoutVersion = "2.1.0-beta02"
-    material = "1.4.0-rc01"
+    androidxConstraintLayoutVersion = "2.2.0-alpha02"
+    material = "1.6.1"
     swipeRefresherLayout = '1.1.0'
     androidx = [
             appcompat           : "com.android.support:appcompat-v7:$androidxSupportVersion",

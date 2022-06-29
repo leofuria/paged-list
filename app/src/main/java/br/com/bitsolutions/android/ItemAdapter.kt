@@ -3,6 +3,7 @@ package br.com.bitsolutions.android
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import br.com.bitsolutions.pagedlist.adapter.PagedListAdapter
+import io.reactivex.rxkotlin.addTo
 
 /**
  * If has only one View Holder uses YourViewHolder otherwise RecyclerView.ViewHolder
@@ -35,7 +36,7 @@ class ItemAdapter : PagedListAdapter<Item, ItemViewHolder>(DiffCallback) {
         return ItemViewHolder.create(parent).apply {
             getNotifyItemClickViewHolder().subscribe {
                 notifyItemClick.onNext(Pair(adapterPosition, it))
-            }
+            }.addTo(disposable)
         }
     }
 

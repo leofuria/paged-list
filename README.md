@@ -38,7 +38,7 @@ You need to generate a [Personal access tokens][create.token], and add it to you
 
 Next, add the dependency to the application level `build.gradle`:
 ```groovy
-implementation "br.com.bitsolutions:pagedlist:1.0.0"
+implementation "br.com.bitsolutions:pagedlist:1.0.1"
 ```
 
 ## GitHub Releases
@@ -49,7 +49,7 @@ repositories {
 }
 
 dependencies {
-  implementation "com.github.leofuria:paged-list:1.0.0"
+  implementation "com.github.leofuria:paged-list:1.0.1"
 }
 ```
 
@@ -61,11 +61,14 @@ To use the component, just add the view to the layout and follow the examples in
 <br.com.bitsolutions.pagedlist.view.PagedListLayout
         android:id="@+id/pagedListRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent" />
+```
+or if you want to use only PagedListAdapter component without SwipeRefresh.
+```xml
+<androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pagedListRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 ```
 
 ## Common Issues
@@ -88,7 +91,6 @@ To use the component, just add the view to the layout and follow the examples in
 <resources>
     <color name="paged_list_primary_color">#143A7C</color>
     <color name="paged_list_primary_color_light">#1265C0</color>
-    <color name="paged_list_secondary_color">#E6207E</color>
 
     <color name="paged_list_gray">#9e9e9e</color>
     <color name="paged_list_gray_dark">#616161</color>

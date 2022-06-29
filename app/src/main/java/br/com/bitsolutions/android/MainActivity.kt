@@ -9,6 +9,8 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.bitsolutions.android.databinding.ActivityMainBinding
 import br.com.bitsolutions.pagedlist.adapter.PagedListAdapter
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 
 class MainActivity : AppCompatActivity() {
     private lateinit var adapter: ItemAdapter
@@ -49,8 +51,9 @@ class MainActivity : AppCompatActivity() {
             getNotifyItemClick().subscribe {
                 val message = "${it.second.id} - ${it.second.desc}"
                 Toast.makeText(this@MainActivity, message, Toast.LENGTH_LONG).show()
-            }
+            }.addTo(compositeDisposable = CompositeDisposable())
         }
+        adapter.hasFooter = false
 
         if (errorEnabled) {
             errorEnabled = false
