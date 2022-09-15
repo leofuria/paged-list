@@ -210,10 +210,10 @@ abstract class PagedListAdapter<T, VH : RecyclerView.ViewHolder>(
     protected open fun createFooterView(parent: ViewGroup): RecyclerView.ViewHolder {
 
         val view = PagedListFooterViewHolderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        if (hasFooter)
-            view.endListFooter.visibility = View.VISIBLE
-        else
-            view.endListFooter.visibility = View.GONE
+        view.endListFooter.visibility = if (hasFooter) View.VISIBLE else View.GONE
+
+        if (!hasFooter)
+            view.endListFooter.layoutParams = RecyclerView.LayoutParams(0, 0)
 
         return object : RecyclerView.ViewHolder(view.root) {}
     }

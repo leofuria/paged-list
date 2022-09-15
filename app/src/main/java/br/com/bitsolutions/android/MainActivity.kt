@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this@MainActivity, message, Toast.LENGTH_LONG).show()
             }.addTo(compositeDisposable = CompositeDisposable())
         }
-        adapter.hasFooter = false
+        adapter.hasFooter = true
 
         if (errorEnabled) {
             errorEnabled = false

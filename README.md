@@ -38,7 +38,7 @@ You need to generate a [Personal access tokens][create.token], and add it to you
 
 Next, add the dependency to the application level `build.gradle`:
 ```groovy
-implementation "br.com.bitsolutions:pagedlist:1.0.1"
+implementation "br.com.bitsolutions:pagedlist:1.0.2"
 ```
 
 ## GitHub Releases
@@ -49,7 +49,7 @@ repositories {
 }
 
 dependencies {
-  implementation "com.github.leofuria:paged-list:1.0.1"
+  implementation "com.github.leofuria:paged-list:1.0.2"
 }
 ```
 
